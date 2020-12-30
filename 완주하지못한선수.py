@@ -32,14 +32,19 @@
 #             break
 #     return result
 
+import collections
 def solution(participant, completion):
-    temp = 0
-    dic = {}
-    for p in participant:
-        dic[hash(p)] = p
-        temp += hash(p)
-    for c in completion:
-        temp -= hash(c)
-    return dic[temp]
+    result = collections.Counter(participant) - collections.Counter(completion)
+    print(list(result.keys())[0])
+
+# def solution(participant, completion):
+#     temp = 0
+#     dic = {}
+#     for p in participant:
+#         dic[hash(p)] = p
+#         temp += hash(p)
+#     for c in completion:
+#         temp -= hash(c)
+#     return dic[temp]
 
 print(solution(["leo","kiki","eden"],["leo","kiki"]))
