@@ -24,11 +24,22 @@
 #         answer+=1
 
 def solution(bridge_length, weight, truck_weights):
-    answer = 1
-    
-    return answer
+    from collections import deque
+    answer = 0
+    on_bridge = deque([0]*bridge_length)
+    truck_weights = deque(truck_weights)
+    sum_weight = 0
+    while truck_weights:
+        answer+=1
+        sum_weight-=on_bridge.popleft() #지나간 트럭 무게 빼주기
+        if sum_weight + truck_weights[0]<= weight:
+            sum_weight += truck_weights[0]
+            on_bridge.append(truck_weights.popleft())
+        else:
+            on_bridge.append(0)
+    return answer+bridge_length
 
-print(solution(5,5,[2,2,2,2,1,1,1,1]))
+# print(solution(5,5,[2,2,2,2,1,1,1,1]))
 # print(solution(100,100,[10]))
-# print(solution(2,10, [7,4,5,6]))
+print(solution(2,10, [7,4,5,6]))
 # print(solution(100,100,[10,10,10,10,10,10,10,10,10,10]))
