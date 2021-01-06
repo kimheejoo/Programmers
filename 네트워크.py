@@ -16,4 +16,4 @@ def solution(n, computers):
             if computers[a][j]==1 and a!=j and j not in visited:
                 stack.append(j)
 
-print(solution(3,[[1, 1, 0], [1, 1, 1], [0, 1, 1]]))
+# print(solution(3,[[1, 1, 0], [1, 1, 1], [0, 1, 1]]))
