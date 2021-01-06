@@ -9,8 +9,6 @@ def DFS(idx, numbers, target, value):
     DFS(idx+1,numbers,target,value+numbers[idx])
     DFS(idx+1,numbers,target,value-numbers[idx])
     
-
-
 def solution(numbers, target):
     DFS(0,numbers,target,0)
     return answer
