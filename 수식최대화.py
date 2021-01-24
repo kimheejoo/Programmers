@@ -5,6 +5,7 @@ def solution(expression):
     number = list(map(int, re.findall('\d+', expression)))
     operator = re.findall('[-*+]', expression)
     priority = permutations(set(operator),len(set(operator)))
+
     for i in priority:
         number_ = number[:]
         operator_ = operator[:]
@@ -12,14 +13,14 @@ def solution(expression):
             j = 0
             while True:
                 if j == len(operator_): break
-                tmp = 0
                 if now == operator_[j]:
-                    if now == '-':
-                        tmp += number_[j] - number_[j+1]
-                    elif now == '+':
-                        tmp += number_[j] + number_[j+1]
-                    else:
-                        tmp += number_[j] * number_[j+1]
+                    tmp = eval(str(number_[j])+now+str(number_[j+1]))
+                    # if now == '-':
+                    #     tmp += number_[j] - number_[j+1]
+                    # elif now == '+':
+                    #     tmp += number_[j] + number_[j+1]
+                    # else:
+                    #     tmp += number_[j] * number_[j+1]
                     number_.pop(j+1)
                     number_.pop(j)
                     number_.insert(j,tmp)
