@@ -2,7 +2,7 @@ def solution(expression):
     from itertools import permutations
     import re
     maxNum = -1
-    number = list(map(int, re.findall('\d+', expression)))
+    number =  re.findall('\d+', expression)
     operator = re.findall('[-*+]', expression)
     priority = permutations(set(operator),len(set(operator)))
 
@@ -14,7 +14,7 @@ def solution(expression):
             while True:
                 if j == len(operator_): break
                 if now == operator_[j]:
-                    tmp = eval(str(number_[j])+now+str(number_[j+1]))
+                    tmp = eval(number_[j]+now+number_[j+1])
                     # if now == '-':
                     #     tmp += number_[j] - number_[j+1]
                     # elif now == '+':
@@ -23,10 +23,10 @@ def solution(expression):
                     #     tmp += number_[j] * number_[j+1]
                     number_.pop(j+1)
                     number_.pop(j)
-                    number_.insert(j,tmp)
+                    number_.insert(j,str(tmp))
                     operator_.pop(j)
                 else: j+=1
-        maxNum = max(maxNum, abs(number_[0]))
+        maxNum = max(maxNum, abs(int(number_[0])))
     return maxNum
 
 print(solution("100-200*300-500+20"))
