@@ -6,7 +6,6 @@ def solution(n, words):
     else:
         return [0,0]
 
-
 # print(solution(3, ['tank', 'kick', 'know', 'wheel', 'land', 'dream', 'mother', 'robot', 'tank']))
 print(solution(5,['hello', 'observe', 'effect', 'take', 'either', 'recognize', 'encourage', 'ensure', 'establish', 'hang', 'gather', 
 'refer', 'reference', 'estimate', 'executive']))
